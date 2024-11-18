@@ -80,7 +80,7 @@ signIn.addEventListener('click', (event) => {
     const user = userCredential.user;
     localStorage.setItem('loggedInUserId', user.uid);
     setTimeout(function() {
-      window.location.href='home.html';
+      window.location.href='pages/home.html';
     }, 900);
   })
   .catch((error) => {
