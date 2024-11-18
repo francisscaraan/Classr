@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/mysessionPage.css">
+    <link rel="stylesheet" href="../styles/all.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Classr. - Sessions</title>
+    <script type="module" src="../src/all/allPre.js"></script>
+    <script type="module" src="../src/mysessionPage/mysessionPagePre.js"></script>
+</head>
+<body>
+    <nav id="navbar">
+        <div class="nav-left">
+            <div class="nav-btn-container">
+                <button id="nav-btn">
+                    <i class='bx bx-menu'></i>
+                </button>
+            </div>
+            <a href="home.html"><img src="../static/images/classrLogo.png" class="classrLogo"></a>
+            <!-- <i class='bx bx-chevron-right' style="font-size: 20px; color: #000000;"></i> -->
+        </div>
+        <div class="center">
+            <p id="navSessionName"></p>
+        </div>
+        <div class="nav-right" onclick="toggleMenu()">
+            <p class="nav-name"><span id="navFullName"></span></span></p>
+            <a href="#"><i class='bx bxs-user-circle' id="user-icon"></i></a>
+            <div class="sub-menu-wrap" id="subMenu">
+                <div class="sub-menu">
+                    <div class="user-info">
+                        <div class="user-icon-container">
+                            <i class='bx bxs-user-circle' id="user-icon"></i>
+                        </div>
+                        <div class="user-info-container">
+                            <p class="user-name"><span id="userFullName"></span></span></p>
+                            <p class="user-email"><span id="userEmail"></span></p>
+                        </div>
+                    </div>
+                    <hr>
+                    <a href="#" class="sub-menu-link" id="logout">
+                        <i class='bx bx-log-out'></i>
+                        <p>Log out</p>
+                        <span><i class='bx bx-chevron-right'></i></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="sidebar-main-content">
+        <div class="sidebar">
+            <ul>
+                <li class="home-btn">
+                    <a href="home.html">
+                        <i class='bx bx-home-alt'></i>
+                        <span class="sidebar-item" id="home">Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="sessions.html">
+                        <i class='bx bx-book-open'></i>
+                        <span class="sidebar-item">Sessions</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="mysessions.html">
+                        <i class='bx bx-line-chart' id="mysessions-icon"></i>
+                        <span class="sidebar-item" id="mysessions-title">My Sessions</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!-- -- -- -- -- -- -- RECITATION TAB -- -- -- -- -- -- -->
+        <div class="main-content" id="recitationScreen">
+            <div class="sub-nav" id="sub-r">
+                <div class="back-container">
+                    <button class="back-btn" onclick="exitSession()">
+                        <i class='bx bx-chevron-left'></i>
+                    </button>
+                </div>
+                <div class="sub-nav-btn">
+                    <button id="recitationR">Recitation</button>
+                </div>
+                <div class="sub-nav-btn">
+                    <button id="membersR">Members</button>
+                </div>
+                <div class="sub-nav-btn">
+                    <button id="groupsR">Groups</button>
+                </div>
+                <div class="sub-nav-btn">
+                    <button id="leaderboardR">Leaderboard</button>
+                </div>
+            </div>
+            <div id="recitation-content">
+                <div class="recitation-call-container">
+                    <div class="call-title">Call a member</div>
+                    <div>
+                        <button id="searchButton"><i class='bx bx-search' style="font-size: 15px;"></i> Search</button>
+                        <button id="callRandom"><i class='bx bx-dice-5' style="font-size: 15px;"></i> Random</button>
+                    </div>
+                </div>
+                <div class="mode-btn-container">
+                    <div class="sort-buttons">
+                        <span style="font-size: 14px;"><i class='bx bx-sort'></i> Sort:</span>
+                        <button id="mostPointsBtn" class="sort-btn active">Most Points</button>
+                        <button id="leastPointsBtn" class="sort-btn">Least Points</button>
+                    </div>
+                    <div class="recitation-mode-buttons">
+                        <button id="individualModeBtn" class="mode-btn active">Individual</button>
+                        <button id="groupModeBtn" class="mode-btn">Group</button>
+                    </div>
+                </div>
+                <div id="recitation-board-container">
+                    <div class="recitation-board-header">
+                        <div class="header-name-title">Name</div>
+                        <div class="header-points-title">Points</div>
+                        <div class="header-edit-title">Edit<br>Points</div>
+                    </div>
+                    <!-- <div class="member-card">
+                        <div class="name-container">
+                            <label class="name-label">Label
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                        <div class="point-container">100</div>
+                        <button id="edit-btn"><i class='bx bx-edit' ></i></button>
+                    </div> -->
+                    <!-- <div class="no-members">
+                        <div class="mssg">There are no members yet :(</div>
+                        <button id="copyInv">Copy code <i class='bx bx-copy'></i></button>
+                    </div> -->
+                </div>
+                <!-- <div class="edit-points-popup" id="epp-container">
+                    <div class="epp-modal">
+                        <div class="epp-info">
+                            <p class="epp-title">Edit Points</p>
+                            <div class="epp-name">Francis Gerard A. Caraan</div>
+                        </div>
+                        <hr>
+                        
+                        <form action="" method="post" class="edit-point-form">
+                            <div class="current-point-container">
+                                <div class="current-point">Current points:</div>
+                                <div class="current-point">0</div>
+                            </div>
+                            <div class="new-point-container">
+                                <div class="new-point">Update points:</div>
+                                <div class="input-epp-container">
+                                    <input type="number" name="newPoints" class="input-epp" placeholder="Edit points" required>
+                                </div>
+                            </div>
+                            <div class="epp-btn-container">
+                                <button id="cancel-edit" class="epp-btn" type="button">Cancel</button>
+                                <button id="save-edit" class="epp-btn" type="submit">Save</button>
+                            </div>
+                        </form>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+        <!-- -- -- -- -- -- -- MEMBERS TAB -- -- -- -- -- -- -->
+        <div class="main-content" id="memberScreen" style="display: none;">
+            <div class="sub-nav" id="sub-m">
+                <div class="back-container">
+                    <button class="back-btn" onclick="exitSession()">
+                        <i class='bx bx-chevron-left'></i>
+                    </button>
+                </div>
+                <div class="sub-nav-btn">
+                    <button id="recitationM">Recitation</button>
+                </div>
+                <div class="sub-nav-btn">
+                    <button id="membersM">Members</button>
+                </div>
+                <div class="sub-nav-btn">
+                    <button id="groupsM">Groups</button>
+                </div>
+                <div class="sub-nav-btn">
+                    <button id="leaderboardM">Leaderboard</button>
+                </div>
+            </div>
+            <div id="members-content">
+                <div class="host-container">
+                    <div class="tab-title-container">
+                        <p class="tab-title">Host</p>
+                    </div>
+                    <hr class="divider">
+                    <div class="host-name">
+                        <div id="mtHostName" class="mt-name-text"></div>
+                        <div id="mtHostEmail" class="mt-email-text"></div>
+                    </div>
+                </div>
+                <div id="membersContainer" class="members-container">
+                    <div class="tab-title-container">
+                        <p class="tab-title">Members</p>
+                    </div>
+                    <hr class="divider">
+                    <!-- <div class="mt-member-card">
+                        <div class="name-email-container">
+                            <div class="mt-name-text">Francis Gerard A. Caraan</div>
+                            <div class="mt-email-text">ciss@gmail.com</div>
+                        </div>
+                        <button id="delete-member"><i class='bx bx-trash'></i></button>
+                    </div>
+                    <hr class="divider"> -->
+                    <!-- <div class="mt-no-members">
+                        <div class="mssg">There are no members yet :(</div>
+                        <button id="mtCopyInv">Copy code <i class='bx bx-copy'></i></button>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+        <!-- -- -- -- -- -- -- GROUPS TAB -- -- -- -- -- -- -->
+        <div class="main-content" id="groupScreen" style="display: none;">
+            <div class="sub-nav" id="sub-g">
+                <div class="back-container">
+                    <button class="back-btn" onclick="exitSession()">
+                        <i class='bx bx-chevron-left'></i>
+                    </button>
+                </div>
+                <div class="sub-nav-btn">
+                    <button id="recitationG">Recitation</button>
+                </div>
+                <div class="sub-nav-btn">
+                    <button id="membersG">Members</button>
+                </div>
+                <div class="sub-nav-btn">
+                    <button id="groupsG">Groups</button>
+                </div>
+                <div class="sub-nav-btn">
+                    <button id="leaderboardG">Leaderboard</button>
+                </div>
+            </div>
+            <div id="groups-content">
+                <div class="create-group-container">
+                    <div class="create-group-title">Create Group</div>
+                    <button id="create-btn"><i class='bx bx-group'></i> Create</button>
+                </div>
+            </div>
+        </div>
+        <!-- -- -- -- -- -- -- LEADERBOARD TAB -- -- -- -- -- -- -->
+        <div class="main-content" id="leaderboardScreen" style="display: none;">
+            <div class="sub-nav" id="sub-l">
+                <div class="back-container">
+                    <button class="back-btn" onclick="exitSession()">
+                        <i class='bx bx-chevron-left'></i>
+                    </button>
+                </div>
+                <div class="sub-nav-btn">
+                    <button id="recitationL">Recitation</button>
+                </div>
+                <div class="sub-nav-btn">
+                    <button id="membersL">Members</button>
+                </div>
+                <div class="sub-nav-btn">
+                    <button id="groupsL">Groups</button>
+                </div>
+                <div class="sub-nav-btn">
+                    <button id="leaderboardL">Leaderboard</button>
+                </div>
+            </div>
+            Leaderboard
+        </div>
+    </div>
+</body>
+<script src="../src/all/allPost.js"></script>   
+<script src="../src/mysessionPage/mysessionPagePost.js"></script>
+</html>
