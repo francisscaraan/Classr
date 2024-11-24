@@ -1,9 +1,9 @@
 //SIDEBAR
-let btn = document.querySelector('#nav-btn');
+let btn = document.getElementById('nav-btn');
 let sidebar = document.querySelector('.sidebar');
 
 btn.onclick = function () {
-    sidebar.classList.toggle('active')
+    sidebar.classList.toggle('active');
 };
 
 //PROFILE MENU

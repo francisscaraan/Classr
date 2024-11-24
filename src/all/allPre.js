@@ -21,6 +21,8 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 const db = getFirestore();
 
+
+
 //Get User First Name and Last Name
 onAuthStateChanged(auth, (user) => {
 const loggedInUserId=localStorage.getItem('loggedInUserId');
@@ -46,6 +48,9 @@ else{
     console.log("User Id not Found in Local storage")
 }
 })
+
+
+
 
 //Log Out User
 const logoutButton = document.getElementById('logout');

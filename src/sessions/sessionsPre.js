@@ -72,10 +72,13 @@ async function displaySessions() {
                     // console.log(doc.data());
                     const card = document.createElement('div');
                     card.id = 'session-card';
-                    // card.onclick = goToSessionPage();
+                    card.onclick = () => {
+                        window.location.href = "sessionPage.html?docId=" + encodeURIComponent(doc.id);
+                    }
                     
                     //Session header
                     const cardHeader = document.createElement('div');
+                    cardHeader.style.backgroundColor = doc.data().sessionColor;
                     cardHeader.classList.add('card-header');
 
                     card.appendChild(cardHeader);

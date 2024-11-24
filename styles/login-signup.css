@@ -9,7 +9,8 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background-color: #FDF6EE;
+  /* background-color: #FDF6EE; */
+  background-color: #FFFFFF;
   background-image: url('../static/images/landingPagedesign1.png'), url('../static/images/landingPagedesign2.png');
   background-repeat: no-repeat;
   background-position: bottom left, bottom right;
@@ -21,7 +22,8 @@ header {
   top: 0;
   left: 0;
   right: 0;
-  background-color: #FFFCF8;
+  background-color: #FFFFFF;
+  /* background-color: #FFFCF8; */
   display: flex;
   align-items: center;
   padding: 10px 40px; 
@@ -34,7 +36,8 @@ header .logo {
 }
 
 .container {
-  background-color: #FFFCF8;
+  /* background-color: #FFFCF8; */
+  background-color: #FFFFFF;
   padding: 20px 40px;
   border-radius: 60px;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);

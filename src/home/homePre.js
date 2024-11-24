@@ -53,6 +53,17 @@ else{
 }
 
 //Create Session - Get Form
+function getRandomPastelColor() {
+    const randomColorValue = () => Math.floor(Math.random() * 256); // Random number between 0 and 255
+    const r = (randomColorValue() + 150)/2; // Blend with white
+    const g = (randomColorValue() + 150)/2;
+    const b = (randomColorValue() + 150)/2;
+    // const r = (randomColorValue()); // Blend with white
+    // const g = (randomColorValue());
+    // const b = (randomColorValue());
+    return `rgb(${Math.floor(r)}, ${Math.floor(g)}, ${Math.floor(b)})`;
+}
+
 const createSession = document.querySelector('#create-session-form')
 
 createSession.addEventListener('submit', (event) => {
@@ -66,9 +77,20 @@ createSession.addEventListener('submit', (event) => {
         // membersName: arrayUnion(hostName),
         // membersEmail: arrayUnion(hostEmail),
         dateCreated: serverTimestamp(),
+        sessionColor: getRandomPastelColor(),
         membersName: [],
         membersEmail: [],
         membersPoint: [],
+        membersId: [],
+        groupsName: [],
+        groupsMembers: [],
+        groupsPoint: [],
+        iHistoryName: [],
+        iHistoryDate: [],
+        iHistoryPoint: [],
+        gHistoryName: [],
+        gHistoryDate: [],
+        gHistoryPoint: [],
         // role: 'host',
     })
     .then(() => {
@@ -94,11 +116,13 @@ joinSession.addEventListener('submit', (event) => {
             const addPoint = docSnap.data().membersPoint || [];
             const updateName = [...addName, userName];
             const updatePoint = [...addPoint, 0];
+            
             updateDoc (memberRef, {
                 // members: arrayUnion(userName),
                 membersName: updateName,
                 membersEmail: arrayUnion(userEmail),
                 membersPoint: updatePoint,
+                membersId: arrayUnion(user),
             })
             updateDoc (joinRef, {
                 // membersName: arrayUnion(userName),
@@ -114,6 +138,8 @@ joinSession.addEventListener('submit', (event) => {
     }
     check();
 })
+
+// Display recents
 
 
 

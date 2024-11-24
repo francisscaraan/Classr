@@ -63,9 +63,14 @@ function hideLoading() {
 async function displayMySessions() {
     showLoading();
     const sessionCard = document.getElementById('mysessions-container');
+    const q = query(
+        collection(db, 'sessions'),
+        orderBy('dateCreated', 'desc')
+    );
+    const querySnapshot = await getDocs(q)
     try {
         // Fetch all documents from the collection
-        const querySnapshot = await getDocs(mysessionsRef);
+        
         let docCount = querySnapshot.size;
         let count = 0;
         // Loop through the documents and display their data
@@ -81,6 +86,7 @@ async function displayMySessions() {
                 let creator = data.hostEmail;
                 // let sessionCounter = 1;
                 if (userEmail === creator){
+
                     //Session Card
                     const card = document.createElement('div');
                     card.id = doc.id;
@@ -90,9 +96,17 @@ async function displayMySessions() {
                         window.location.href = "mysessionPage.html?docId=" + encodeURIComponent(doc.id);
                     }
 
-
+                    function getRandomPastelColor() {
+                        const randomColorValue = () => Math.floor(Math.random() * 256); // Random number between 0 and 255
+                        const r = (randomColorValue()); // Blend with white
+                        const g = (randomColorValue());
+                        const b = (randomColorValue());
+                        return `rgb(${Math.floor(r)}, ${Math.floor(g)}, ${Math.floor(b)})`;
+                    }
+                    
                     //Session header
                     const cardHeader = document.createElement('div');
+                    cardHeader.style.backgroundColor = data.sessionColor;
                     cardHeader.classList.add('card-header');
 
                     card.appendChild(cardHeader);
@@ -106,6 +120,8 @@ async function displayMySessions() {
                     cardTitle.classList.add('card-title');
                     cardTitle.textContent = `${data.sessionName}`;
                     cardTitleContainer.appendChild(cardTitle);
+
+                
 
                     //Session copy icon button
                     const copyButton = document.createElement('button');
@@ -121,11 +137,11 @@ async function displayMySessions() {
                         });
                     })
 
-                    //Session copy code
-                    const copyIcon = document.createElement('i');
-                    copyIcon.classList.add('bx', 'bx-copy');
-                    copyButton.appendChild(copyIcon);
-                    cardTitleContainer.appendChild(copyButton);
+                    // //Session copy code
+                    // const copyIcon = document.createElement('i');
+                    // copyIcon.classList.add('bx', 'bx-copy');
+                    // copyButton.appendChild(copyIcon);
+                    // card.appendChild(copyButton);
             
                     //Session author
                     const cardAuthor = document.createElement('div');
@@ -138,6 +154,38 @@ async function displayMySessions() {
                     cardDate.classList.add('card-info');
                     cardDate.textContent = `${data.dateCreated.toDate().getMonth() + 1} / ${data.dateCreated.toDate().getDate()} / ${data.dateCreated.toDate().getFullYear()}`;
                     card.appendChild(cardDate);
+
+                    //Session copy code
+                    const copyIcon = document.createElement('i');
+                    copyIcon.classList.add('bx', 'bx-copy');
+                    copyButton.appendChild(copyIcon);
+
+                    // Delete session button
+                    const deleteButton = document.createElement('delete');
+                    deleteButton.id = 'delete-btn';
+                    deleteButton.addEventListener('click', function(event){
+                        event.stopPropagation();
+                        alert('Sorry Di pa tapos :(((');
+                        // .then(() => {
+                        //     alert('Session Code Copied!');
+                        // })
+                        // .catch(err => {
+                        //     console.error(err);
+                        // });
+                    })
+
+                    // Delete icon
+                    const deleteIcon = document.createElement('i');
+                    deleteIcon.classList.add('bx', 'bx-trash');
+                    deleteButton.appendChild(deleteIcon);
+                    
+                    // Card button container
+                    const cardBtnContainer = document.createElement('div');
+                    cardBtnContainer.classList.add('card-btn-container');
+                    
+                    cardBtnContainer.appendChild(copyButton);
+                    cardBtnContainer.appendChild(deleteButton);
+                    card.appendChild(cardBtnContainer);
 
                     sessionCard.appendChild(card);
                     // sessionCounter++;

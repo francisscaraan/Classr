@@ -29,6 +29,80 @@ window.onscroll = function() {
 //     console.log(sId);
 // }
 
+const waitCreate = document.getElementById('waitCreate');
+function showCreatingGroup(){
+    waitCreate.style.display = 'block'; 
+}
+
+const iModeBtn1 = document.getElementById('iMB1');
+const gModeBtn1 = document.getElementById('gMB1');
+const iModeBtn2 = document.getElementById('iMB2');
+const gModeBtn2 = document.getElementById('gMB2');
+// const iBoard = document.getElementById('mode1');
+// const gBoard = document.getElementById('mode2');
+
+function showMode(screenNumber){
+    document.querySelectorAll('.modeList').forEach(modeList => {
+        modeList.classList.remove('showContent');
+    })
+    document.getElementById(`mode${screenNumber}`).classList.add('showContent');
+    const url = new URL(window.location);
+    url.searchParams.set('modeList', screenNumber);
+    window.history.pushState({}, '', url);
+}
+
+iModeBtn1.addEventListener('click', () => showMode(1));
+gModeBtn1.addEventListener('click', () => showMode(2));
+iModeBtn2.addEventListener('click', () => showMode(1));
+gModeBtn2.addEventListener('click', () => showMode(2));
+
+window.addEventListener('DOMContentLoaded', () => {
+    const params = new URLSearchParams(window.location.search);
+    const screenNumber = params.get('modeList') || 1; // Default to 1
+    showMode(screenNumber);
+});
+
+const iLModeBtn1 = document.getElementById('iLMB1');
+const gLModeBtn1 = document.getElementById('gLMB1');
+const iLModeBtn2 = document.getElementById('iLMB2');
+const gLModeBtn2 = document.getElementById('gLMB2');
+const lmode1 = document.getElementById('lmode1');
+const lmode2 = document.getElementById('lmode2');
+
+iLModeBtn1.addEventListener('click', () => {
+    lmode1.classList.add('showContent');
+    lmode2.classList.remove('showContent');
+})
+
+gLModeBtn1.addEventListener('click', () => {
+    lmode1.classList.remove('showContent');
+    lmode2.classList.add('showContent');
+})
+
+iLModeBtn2.addEventListener('click', () => {
+    lmode1.classList.add('showContent');
+    lmode2.classList.remove('showContent');
+})
+
+gLModeBtn2.addEventListener('click', () => {
+    lmode1.classList.remove('showContent');
+    lmode2.classList.add('showContent');
+})
+
+// iModeBtn.addEventListener('click', () => {
+//     iModeBtn.classList.add('active');
+//     gModeBtn.classList.remove('active');
+//     iBoard.classList.add('showContent');
+//     gBoard.classList.remove('showContent');
+// })
+
+// gModeBtn.addEventListener('click', () => {
+//     iModeBtn.classList.remove('active');
+//     gModeBtn.classList.add('active');
+//     iBoard.classList.remove('showContent');
+//     gBoard.classList.add('showContent');
+// })
+
 //Recitation Screen
 const recitationButtonR = document.getElementById('recitationR');
 const memberButtonR = document.getElementById('membersR');
@@ -54,144 +128,134 @@ const groupsButtonL = document.getElementById('groupsL');
 const leaderboardButtonL = document.getElementById('leaderboardL');
 
 //Screens
-const recitationScreen = document.getElementById('recitationScreen');
-const memberScreen = document.getElementById('memberScreen');
-const groupScreen = document.getElementById('groupScreen');
-const leaderboardScreen = document.getElementById('leaderboardScreen');
+// const recitationScreen = document.getElementById('recitationScreen');
+// const memberScreen = document.getElementById('memberScreen');
+// const groupScreen = document.getElementById('groupScreen');
+// const leaderboardScreen = document.getElementById('leaderboardScreen');
 
+function showScreen(screenNumber){
+    document.querySelectorAll('.screen').forEach(screen => {
+        screen.classList.remove('visible');
+    })
+    document.getElementById(`screen${screenNumber}`).classList.add('visible');
+    const url = new URL(window.location);
+    url.searchParams.set('screen', screenNumber);
+    window.history.pushState({}, '', url);
+}
 
-//Recitation
-recitationButtonR.addEventListener('click', function(){
-    recitationScreen.style.display="block";
-    memberScreen.style.display="none";
-    groupScreen.style.display="none";
-    leaderboardScreen.style.display="none";
-})
+// Recitation
+recitationButtonR.addEventListener('click', () => showScreen(1));
+memberButtonR.addEventListener('click', () => showScreen(2));
+groupsButtonR.addEventListener('click', () => showScreen(3));
+leaderboardButtonR.addEventListener('click', () => showScreen(4));
 
-memberButtonR.addEventListener('click', function(){
-    recitationScreen.style.display="none";
-    memberScreen.style.display="block";
-    groupScreen.style.display="none";
-    leaderboardScreen.style.display="none";
-})
+// Members
+recitationButtonM.addEventListener('click', () => showScreen(1));
+memberButtonM.addEventListener('click', () => showScreen(2));
+groupsButtonM.addEventListener('click', () => showScreen(3));
+leaderboardButtonM.addEventListener('click', () => showScreen(4));
 
-groupsButtonR.addEventListener('click', function(){
-    recitationScreen.style.display="none";
-    memberScreen.style.display="none";
-    groupScreen.style.display="block";
-    leaderboardScreen.style.display="none";
-})
+// Groups
+recitationButtonG.addEventListener('click', () => showScreen(1));
+memberButtonG.addEventListener('click', () => showScreen(2));
+groupsButtonG.addEventListener('click', () => showScreen(3));
+leaderboardButtonG.addEventListener('click', () => showScreen(4));
 
-leaderboardButtonR.addEventListener('click', function(){
-    recitationScreen.style.display="none";
-    memberScreen.style.display="none";
-    groupScreen.style.display="none";
-    leaderboardScreen.style.display="block";
-})
+// Leaderboard
+recitationButtonL.addEventListener('click', () => showScreen(1));
+memberButtonL.addEventListener('click', () => showScreen(2));
+groupsButtonL.addEventListener('click', () => showScreen(3));
+leaderboardButtonL.addEventListener('click', () => showScreen(4));
 
-//Members
-recitationButtonM.addEventListener('click', function(){
-    recitationScreen.style.display="block";
-    memberScreen.style.display="none";
-    groupScreen.style.display="none";
-    leaderboardScreen.style.display="none";
-})
-
-memberButtonM.addEventListener('click', function(){
-    recitationScreen.style.display="none";
-    memberScreen.style.display="block";
-    groupScreen.style.display="none";
-    leaderboardScreen.style.display="none";
-})
-
-groupsButtonM.addEventListener('click', function(){
-    recitationScreen.style.display="none";
-    memberScreen.style.display="none";
-    groupScreen.style.display="block";
-    leaderboardScreen.style.display="none";
-})
-
-leaderboardButtonM.addEventListener('click', function(){
-    recitationScreen.style.display="none";
-    memberScreen.style.display="none";
-    groupScreen.style.display="none";
-    leaderboardScreen.style.display="block";
-})
-
-//Groups
-recitationButtonG.addEventListener('click', function(){
-    recitationScreen.style.display="block";
-    memberScreen.style.display="none";
-    groupScreen.style.display="none";
-    leaderboardScreen.style.display="none";
-})
-
-memberButtonG.addEventListener('click', function(){
-    recitationScreen.style.display="none";
-    memberScreen.style.display="block";
-    groupScreen.style.display="none";
-    leaderboardScreen.style.display="none";
-})
-
-groupsButtonG.addEventListener('click', function(){
-    recitationScreen.style.display="none";
-    memberScreen.style.display="none";
-    groupScreen.style.display="block";
-    leaderboardScreen.style.display="none";
-})
-
-leaderboardButtonG.addEventListener('click', function(){
-    recitationScreen.style.display="none";
-    memberScreen.style.display="none";
-    groupScreen.style.display="none";
-    leaderboardScreen.style.display="block";
-})
-
-//Leaderboard
-recitationButtonL.addEventListener('click', function(){
-    recitationScreen.style.display="block";
-    memberScreen.style.display="none";
-    groupScreen.style.display="none";
-    leaderboardScreen.style.display="none";
-})
-
-memberButtonL.addEventListener('click', function(){
-    recitationScreen.style.display="none";
-    memberScreen.style.display="block";
-    groupScreen.style.display="none";
-    leaderboardScreen.style.display="none";
-})
-
-groupsButtonL.addEventListener('click', function(){
-    recitationScreen.style.display="none";
-    memberScreen.style.display="none";
-    groupScreen.style.display="block";
-    leaderboardScreen.style.display="none";
-})
-
-leaderboardButtonL.addEventListener('click', function(){
-    recitationScreen.style.display="none";
-    memberScreen.style.display="none";
-    groupScreen.style.display="none";
-    leaderboardScreen.style.display="block";
-})
+window.addEventListener('DOMContentLoaded', () => {
+    const params = new URLSearchParams(window.location.search);
+    const screenNumber = params.get('screen') || 1; // Default to 1
+    showScreen(screenNumber);
+});
 
 function exitSession(){
     // localStorage.removeItem("sessionId");
     window.location.href= 'mysessions.html';
 }
 
-// Close EPP
-// const closeEpp = document.getElementById('cancel-edit');
-// const eppContainer = document.querySelector('.edit-points-popup');
-// closeEpp.addEventListener('click', () => {
-//     event.preventDefault();
-//     eppContainer.classList.remove('showEpp');
-//     document.getElementById('edit-points').reset();
+const openCallRandom = document.getElementById('callRandom');
+const openCallGroup = document.getElementById('callGroup');
+const rcpContainer = document.getElementById('rcp-container');
+const rcpContainerGroup = document.getElementById('rcp-container-group');
+const closeCallRandom = document.getElementById('rcp-done-btn');
+const closeCallGroup = document.getElementById('group-done-btn');
+
+openCallRandom.addEventListener('click', () => {
+    rcpContainer.classList.add('showRcp');
+})
+
+openCallGroup.addEventListener('click', () => {
+    rcpContainerGroup.classList.add('showRcp');
+})
+
+closeCallRandom.addEventListener('click', () => {
+    event.preventDefault();
+    rcpContainer.classList.remove('showRcp');
+})
+
+closeCallGroup.addEventListener('click', () => {
+    event.preventDefault();
+    rcpContainerGroup.classList.remove('showRcp');
+})
+
+const openCreateGroup = document.getElementById('create-btn');
+const cgpContainer = document.getElementById('cgp-container');
+const closeCreateGroup = document.getElementById('cancel-createGroup');
+
+openCreateGroup.addEventListener('click', () => {
+    cgpContainer.classList.add('showCgp');
+})
+
+closeCreateGroup.addEventListener('click', () => {
+    event.preventDefault();
+    cgpContainer.classList.remove('showCgp');
+    document.getElementById('create-group-form').reset();
+})
+
+// const waitCreate = document.getElementById('waitCreate');
+// function showCreatingGroup(){
+//     waitCreate.style.display = 'block'; 
+// }
+
+// const iModeBtn = document.getElementById('individualModeBtn');
+// const gModeBtn = document.getElementById('groupModeBtn');
+// const iBoard = document.getElementById('mode-recitation-container1');
+// const gBoard = document.getElementById('mode-recitation-container2');
+
+// function showMode(screenNumber){
+//     document.querySelectorAll('.modeContent').forEach(modeContent => {
+//         modeContent.classList.remove('showContent');
+//     })
+//     document.getElementById(`mode-recitation-container${screenNumber}`).classList.add('showContent');
+//     const url = new URL(window.location);
+//     url.searchParams.set('modeContent', screenNumber);
+//     window.history.pushState({}, '', url);
+// }
+
+// iModeBtn.addEventListener('click', () => showMode(1));
+// gModeBtn.addEventListener('click', () => showMode(2));
+
+// window.addEventListener('DOMContentLoaded', () => {
+//     const params = new URLSearchParams(window.location.search);
+//     const screenNumber = params.get('modeContent') || 1; // Default to 1
+//     showMode(screenNumber);
+// });
+
+// iModeBtn.addEventListener('click', () => {
+//     iModeBtn.classList.add('active');
+//     gModeBtn.classList.remove('active');
+//     iBoard.classList.add('showContent');
+//     gBoard.classList.remove('showContent');
 // })
 
-// document.querySelector('.edit-point-form').addEventListener('keydown', function(event){
-//     if (event.key === 'Enter'){
-//         event.preventDefault();
-//     }
+// gModeBtn.addEventListener('click', () => {
+//     iModeBtn.classList.remove('active');
+//     gModeBtn.classList.add('active');
+//     iBoard.classList.remove('showContent');
+//     gBoard.classList.add('showContent');
 // })

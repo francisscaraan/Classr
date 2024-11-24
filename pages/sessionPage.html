@@ -14,6 +14,7 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <title>Classr. - Sessions</title>
     <script type="module" src="../src/all/allPre.js"></script>
+    <script type="module" src="../src/sessions/sessionsPagePre.js"></script>
 </head>
 <body>
     <nav id="navbar">
@@ -25,6 +26,9 @@
             </div>
                 <a href="home.html"><img src="../static/images/classrLogo.png" class="classrLogo"></a>
         </div>
+        <div class="center">
+            <p id="navJoinedSessionName"></p>
+        </div>
         <div class="nav-right" onclick="toggleMenu()">
             <p class="nav-name"><span id="navFullName"></span></span></p>
             <a href="#"><i class='bx bxs-user-circle' id="user-icon"></i></a>
@@ -32,7 +36,7 @@
                 <div class="sub-menu">
                     <div class="user-info">
                         <div class="user-icon-container">
-                            <i class='bx bxs-user-circle' id="user-icon"></i>
+                            <i class='bx bxs-user-circle' id="user-icon-d"></i>
                         </div>
                         <div class="user-info-container">
                             <p class="user-name"><span id="userFullName"></span></span></p>
@@ -72,10 +76,60 @@
                 </li>
             </ul>
         </div>
-        <div class="main-content">
-            <p>session page</p>
+        <!-- MY RECORDS TAB -->
+        <div id="screen1" class="screen visible">
+            <div class="sub-nav" id="sub-r">
+                <div class="back-container">
+                    <button class="back-btn" onclick="exitSession()">
+                        <i class='bx bx-chevron-left'></i>
+                    </button>
+                </div>
+                <div class="sub-nav-btn">
+                    <button id="recitationR">Recitation</button>
+                </div>
+                <div class="sub-nav-btn">
+                    <button id="membersR">Members</button>
+                </div>
+                <div class="sub-nav-btn">
+                    <button id="groupsR">Groups</button>
+                </div>
+                <div class="sub-nav-btn">
+                    <button id="leaderboardR">Leaderboard</button>
+                </div>
+            </div>
+            
+            <div id="s-recitation-content">
+                <div class="myRecord-container">
+                    <div class="myRecord-info-container">
+                        <div class="myRecord-title-container">
+                            <div class="myRecord-title">My Recitation Record</div>
+                            <div class="nameContainer">
+                                <div id="s-userName"></div>
+                            </div>
+                        </div>
+                        <hr>
+                        
+                            
+                        <div class="myRecord-userInfo-container">
+                            <div class="rankContainer">
+                                <div>Rank:</div>
+                                <div id="s-userRank"></div>
+                            </div>
+                            <div class="pointsContainer">
+                                <div>Total points:</div>
+                                <div id="s-userPoint"></div>
+                            </div>
+                        </div>
+                        
+                        
+                    </div>
+                </div>
+            </div>
+            
+            
         </div>
     </div>
 </body>
 <script src="../src/all/allPost.js"></script>
+<script src="../src/sessions/sessionsPagePost.js "></script>
 </html>
