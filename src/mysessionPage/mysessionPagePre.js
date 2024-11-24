@@ -250,8 +250,8 @@ async function displayGroupMode(){
                     eppGroupName.textContent = `${groupName[i]}`;
                     eppGroupInfo.appendChild(eppGroupName);
 
-                    const eppGroupDivider = document.createElement('hr');
-                    eppGroupModal.appendChild(eppGroupDivider);
+                    // const eppGroupDivider = document.createElement('hr');
+                    // eppGroupModal.appendChild(eppGroupDivider);
 
                     const eppGroupForm = document.createElement('form');
                     eppGroupForm.classList.add('edit-point-form');
@@ -513,7 +513,7 @@ async function displayIndividualMode(){
                             eppName.textContent = `${member[i]}`;
                             eppInfo.appendChild(eppName);
 
-                            eppModal.appendChild(document.createElement('hr'));
+                            // eppModal.appendChild(document.createElement('hr'));
 
                             const editPointForm = document.createElement('form');
                             editPointForm.classList.add('edit-point-form');
@@ -1528,31 +1528,34 @@ try {
         // Display the sorted array
         // console.log("Sorted Names and Points:");
         let i = 1;
+        
         combinedArray.forEach((entry) => {
             // console.log(`${i}  ${entry.memName}: ${entry.memPoints}`);
-            const lBoardCard = document.createElement('div');
-            lBoardCard.classList.add('lboard-card');
-            lBoardCont2.appendChild(lBoardCard);
-
-            const lboardRank = document.createElement('div');
-            lboardRank.classList.add('lboard-rank');
-            lboardRank.textContent = `${i}`;
-            lBoardCard.appendChild(lboardRank);
-            
-
-            const lboardName = document.createElement('div');
-            lboardName.classList.add('lboard-name');
-            lboardName.textContent = `${entry.grpName}`;
-            lBoardCard.appendChild(lboardName);
-
-            const lboardPoints = document.createElement('div');
-            lboardPoints.classList.add('lboard-points');
-            lboardPoints.textContent = `${entry.grpPoints}`;
-            lBoardCard.appendChild(lboardPoints);
-
-
-            i++;
+            if (i <= 10){
+                const lBoardCard = document.createElement('div');
+                lBoardCard.classList.add('lboard-card');
+                lBoardCont2.appendChild(lBoardCard);
+    
+                const lboardRank = document.createElement('div');
+                lboardRank.classList.add('lboard-rank');
+                lboardRank.textContent = `${i}`;
+                lBoardCard.appendChild(lboardRank);
+                
+    
+                const lboardName = document.createElement('div');
+                lboardName.classList.add('lboard-name');
+                lboardName.textContent = `${entry.grpName}`;
+                lBoardCard.appendChild(lboardName);
+    
+                const lboardPoints = document.createElement('div');
+                lboardPoints.classList.add('lboard-points');
+                lboardPoints.textContent = `${entry.grpPoints}`;
+                lBoardCard.appendChild(lboardPoints);
+                i++;
+            }
         });
+
+        
     } else {
         console.log("no data");
     }
