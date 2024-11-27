@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js"; 
 import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-auth.js";
-import { getFirestore, collection, query, orderBy, limit, getDoc, getDocs, addDoc, doc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore.js";
+import { getFirestore, collection, query, orderBy, limit, getDoc, getDocs, addDoc, doc, serverTimestamp, deleteDoc } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -83,6 +83,7 @@ async function displayMySessions() {
 
             querySnapshot.forEach((doc) => {
                 const data = doc.data();
+                // const docRef = doc(db, "sessions", doc.id);
                 let creator = data.hostEmail;
                 // let sessionCounter = 1;
                 if (userEmail === creator){
@@ -160,31 +161,118 @@ async function displayMySessions() {
                     copyIcon.classList.add('bx', 'bx-copy');
                     copyButton.appendChild(copyIcon);
 
-                    // Delete session button
-                    const deleteButton = document.createElement('delete');
-                    deleteButton.id = 'delete-btn';
-                    deleteButton.addEventListener('click', function(event){
-                        event.stopPropagation();
-                        alert('Sorry Di pa tapos :(((');
-                        // .then(() => {
-                        //     alert('Session Code Copied!');
-                        // })
-                        // .catch(err => {
-                        //     console.error(err);
-                        // });
-                    })
+                    // // Delete session popup
+                    // const deleteSessionPopup = document.createElement('div');
+                    // deleteSessionPopup.classList.add('delete-mem-popup');
+                    // sessionCard.appendChild(deleteSessionPopup);
 
-                    // Delete icon
-                    const deleteIcon = document.createElement('i');
-                    deleteIcon.classList.add('bx', 'bx-trash');
-                    deleteButton.appendChild(deleteIcon);
+                    // const dmpModal = document.createElement('div');
+                    // dmpModal.classList.add('dmp-modal');
+                    // deleteSessionPopup.appendChild(dmpModal);
+
+                    // const dmpInfo = document.createElement('div');
+                    // dmpInfo.classList.add('dmp-info');
+                    // dmpModal.appendChild(dmpInfo);
+
+                    // const dmpTitle = document.createElement('p');
+                    // dmpTitle.classList.add('dmp-title');
+                    // dmpTitle.textContent = 'Delete Session'
+                    // dmpInfo.appendChild(dmpTitle);
+
+                    // const deleteQ = document.createElement('p');
+                    // deleteQ.classList.add('deleteQ');
+                    // deleteQ.textContent = `Delete ${data.sessionName}?`;
+                    // dmpModal.appendChild(deleteQ);
+
+                    // const deleteSessionForm = document.createElement('form');
+                    // deleteSessionForm.id = 'delete-session-form';
+                    // deleteSessionForm.classList.add('deleteMemForm');
+                    // deleteSessionForm.method = "post";
+                    // deleteSessionForm.action = "";
+                    // dmpModal.appendChild(deleteSessionForm);
+                    
+                    // const dmpBtnContainer = document.createElement('div');
+                    // dmpBtnContainer.classList.add('dmp-btn-container');
+                    // deleteSessionForm.appendChild(dmpBtnContainer);
+
+                    // const cancelDelete = document.createElement('button');
+                    // cancelDelete.classList.add('egp-btn');
+                    // cancelDelete.type = "button";
+                    // cancelDelete.textContent = 'Cancel';
+                    // cancelDelete.addEventListener('click', () => {
+                    //     deleteSessionPopup.classList.remove('showDmp');
+                    // })
+                    // dmpBtnContainer.appendChild(cancelDelete); 
+                    
+                    // const submitDelete = document.createElement('button');
+                    // submitDelete.classList.add('dgp-btn');
+                    // submitDelete.type = "submit";
+                    // submitDelete.textContent = 'Delete';
+                    // dmpBtnContainer.appendChild(submitDelete);
+
+                    // const waitDelete = document.createElement('div');
+                    // waitDelete.classList.add('waitCreate');
+                    // waitDelete.textContent = 'Deleting session...';
+                    // deleteSessionForm.appendChild(waitDelete);
+                    
+                    // function showDMM(){
+                    //     waitDelete.style.display = "block";
+                    // }
+
+                    // deleteSessionForm.addEventListener('submit', (event) => {
+                    //     event.preventDefault()
+
+                    //     async function dmp() {
+                    //         showDMM();
+                    //         const docSnap = await getDoc(docRef);
+                    //         try {
+                    //             if(docSnap.exists()) {
+                    //                 const data = docSnap.data();
+                    //                 const memberId = data.membersId;
+                    //                 if(Array.isArray(memberId)){
+                    //                     for(let i = 0; i < memberId.length; i++){
+                    //                         // const memRef = doc(db, "users", memberId[i]);
+                    //                         // const memSnap = await getDoc(memRef);
+                    //                         // const memData = memSnap.data();
+                    //                         // const joinedSessions = memData.joinedSessions;
+    
+                    //                         // updateDoc (memRef, {
+                    //                         //     joinedSessions: arrayRemove(memberId[i]),
+                    //                         // })
+                    //                         console.log(`${memberId[i]}`);
+                    //                     }
+                    //                     // docRef.delete();
+                    //                 } else {
+                    //                     console.log('Error');
+                    //                 }
+                                    
+                    //             }
+                    //         } catch (error){
+                    //             console.error(error);
+                    //         }
+                    //     }
+                    //     dmp();
+                    // })
+
+                    // // Delete session button
+                    // const deleteButton = document.createElement('delete');
+                    // deleteButton.id = 'delete-btn';
+                    // deleteButton.addEventListener('click', function(event){
+                    //     event.stopPropagation();
+                    //     deleteSessionPopup.classList.add('showDmp');
+                    // })
+
+                    // // Delete icon
+                    // const deleteIcon = document.createElement('i');
+                    // deleteIcon.classList.add('bx', 'bx-trash');
+                    // deleteButton.appendChild(deleteIcon);
                     
                     // Card button container
                     const cardBtnContainer = document.createElement('div');
                     cardBtnContainer.classList.add('card-btn-container');
                     
                     cardBtnContainer.appendChild(copyButton);
-                    cardBtnContainer.appendChild(deleteButton);
+                    // cardBtnContainer.appendChild(deleteButton);
                     card.appendChild(cardBtnContainer);
 
                     sessionCard.appendChild(card);
@@ -194,6 +282,10 @@ async function displayMySessions() {
                 }
             });
             if (count == docCount){
+                // const mySessionsContent = document.getElementById('mysessionsContent');
+                // const noSessionsContainer = document.createElement('div');
+            
+
                 const emptyMsg = document.createElement('div');
                 emptyMsg.textContent = 'You have not created a session yet :(';
                 emptyMsg.classList.add('no-doc-msg');
@@ -206,5 +298,4 @@ async function displayMySessions() {
         hideLoading();
     }
 }
-
 displayMySessions();

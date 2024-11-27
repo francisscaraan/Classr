@@ -48,6 +48,19 @@ window.onscroll = function() {
         navbar.classList.remove("nav-shadow");
     }
 }
+
+document.getElementById('fcard-1').addEventListener('click', () => {
+    window.location.href = 'sessions.html';
+})
+document.getElementById('fcard-2').addEventListener('click', () => {
+    window.location.href = 'mysessions.html';
+})
+document.getElementById('fcard-3').addEventListener('click', () => {
+    window.location.href = 'features.html';
+})
+document.getElementById('fcard-4').addEventListener('click', () => {
+    window.location.href = 'about.html';
+})
 //GENERATE UID
 // function generate(){
 //     var input = document.getElementById('sessionCode');

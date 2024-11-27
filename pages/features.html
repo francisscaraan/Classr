@@ -3,18 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../styles/mysessions.css">
+    <link rel="stylesheet" href="../styles/home.css">
     <link rel="stylesheet" href="../styles/all.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <title>Classr. - My Sessions</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=build" />
     <script type="module" src="../src/all/allPre.js"></script>
-    <script type="module" src="../src/mysessions/mysessionPre.js"></script>
+    <script type="module" src="../src/home/homePre.js"></script>
+    <title>Classr. - Home</title>
 </head>
 <body>
     <nav id="navbar">
@@ -51,12 +52,12 @@
         </div>
     </nav>
     <div class="sidebar-main-content">
-        <div class="sidebar active">
+        <div class="sidebar">
             <ul>
                 <li class="home-btn">
                     <a href="home.html">
-                        <i class='bx bx-home-alt'></i>
-                        <span class="sidebar-item">Home</span>
+                        <i class='bx bx-home-alt' id="home-icon"></i>
+                        <span class="sidebar-item" id="home-title">Home</span>
                     </a>
                 </li>
                 <li>
@@ -67,37 +68,51 @@
                 </li>
                 <li>
                     <a href="mysessions.html">
-                        <i class='bx bx-line-chart' id="mysessions-icon"></i>
-                        <span class="sidebar-item" id="mysessions-title">My Sessions</span>
+                        <i class='bx bx-line-chart' ></i>
+                        <span class="sidebar-item">My Sessions</span>
                     </a>
                 </li>
             </ul>
         </div>
-        <div class="main-content">
-            <div id="mysessions-container">
-                <div id="loading">
-                    <div class="spinner"></div>
-                </div>
-                <!-- mysession card -->
-                <!-- <div class="delete-mem-popup">
-                    <div class="dmp-modal">
-                        <div class="dmp-info">
-                            <p class="dmp-title">Delete Session</p>
-                        </div>
-                        <p class="deleteQ">Delete Arts?</p>
-                        <form action="" method="post" id="delete-session-form" class="deleteMemForm">
-
-                            <div class="dmp-btn-container">
-                                <button id="cancel-deleteMem" class="egp-btn" type="button">Cancel</button>
-                                <button id="save-deleteMem" class="dgp-btn" type="submit">Delete</button>
-                            </div>
-                            <div class="waitCreate" id="waitDelete">Deleting group...</div>
-                        </form>
-                    </div>
-                </div> -->
+        <div class="main-content" id="feature-content">
+            <a href="home.html"><i class='bx bx-arrow-back' ></i> Back to home</a>
+            <div class="about-container">
+                <img src="../static/images/classrLogo.png" alt="classr">
+                <br>
+                <h2>Feature updates</h2>
+                <p class="ver-info">Classr. v1.3.0</p>
+                <br>
+                <b>1.0 Join and Create Sessions</b>
+                <div class="f-list">
+                    <p>1.1 Join session using the code provided by a session host.</p>
+                    <p>1.2 Create session with ease and copy auto generated code to invite users.</p>
+                </div><br>
+                <b>2.0 Recitation tools</b>
+                <div class="f-list">
+                    <p>2.1 Call random member or group feature.</p>
+                    <p>2.2 Edit member and group points.</p>
+                    <p>2.2 View recitation history. <b>(NEW)</b></p>
+                </div><br>
+                <b>3.0 Competitive Recitation</b>
+                <div class="f-list">
+                    <p>3.1 Leaderboard for the top 10 members and groups.</p>
+                    <p>3.2 View personal ranking in joined sessions.</p>
+                </div><br>
+                <b>4.0 Group Recitation</b>
+                <div class="f-list">
+                    <p>4.1 Hosts can create and edit groups.</p>
+                </div><br>
+                <b>Other updates</b>
+                <div class="f-list">
+                    <p>- Improved user interface.</p>
+                    <p>- Fixed errors. (Sign in/ Log in error)</p>
+                    <p>- Completed functions.</p>
+                </div><br><br><br>
+                <!-- <p style="font-size: 11px; align-self: center;"><i class='bx bx-envelope'></i> Contact us: etechsolutions@gmail.com</p> -->
             </div>
         </div>
     </div>
 </body>
 <script src="../src/all/allPost.js"></script>
+<script src="../src/home/homePost.js"></script>
 </html>

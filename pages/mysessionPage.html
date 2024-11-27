@@ -337,8 +337,24 @@
                         </form>
                     </div>
                 </div> -->
-            </div>
+                <button class="delete-session" id="delete-session-btn"><i class='bx bx-trash' ></i><p>Delete Session</p></button>
+                <div class="delete-session-popup" id="dsp">
+                    <div class="dsp-modal">
+                        <div class="dmp-info">
+                            <p class="dmp-title">Delete Session?</p>
+                        </div>
+                        <div class="deleteQdsp">All session data will be permanently deleted.</div>
+                        <form action="" method="post" id="delete-mem-form" class="deleteMemForm">
 
+                            <div class="dmp-btn-container">
+                                <button id="cancel-delete" class="egp-btn" type="button">Cancel</button>
+                                <button id="save-delete" class="dgp-btn" type="button">Delete</button>
+                            </div>
+                            <div class="waitDelete" id="waitDelete">Deleting Session...</div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
         <!-- -- -- -- -- -- -- GROUPS TAB -- -- -- -- -- -- -->
         <div class="screen" id="screen3">
@@ -549,37 +565,6 @@
                         </form>
                     </div>
                 </div> -->
-                <div class="random-call-popup" id="rcp-container">
-                    <div class="rcp-modal" id="rcp-modal">
-                        <div class="rcp-info">
-                            <p class="rcp-title">Random Call</p>
-                        </div>
-                        <div id="calling-mssg" class="calling-mssg">Calling randomly...</div>
-                        <div class="random-name-container">
-                            <p id="random-name"></p>
-                        </div>
-                        <div class="rcp-btn-container" id="rcp=cgp-btn-container">
-                            <button id="rcp-again-btn" class="rcp-btn" type="button">Call again</button>
-                            <button id="rcp-done-btn" class="rcp-btn" type="submit">Done</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="random-call-popup" id="rcp-container-group">
-                    <div class="rcp-modal" id="rcp-modal-group">
-                        <div class="rcp-info">
-                            <p class="rcp-title">Random Call</p>
-                        </div>
-                        <div id="calling-mssg-group" class="calling-mssg">Calling randomly...</div>
-                        <div class="random-name-container">
-                            <p id="group-random-name"></p>
-                            <p id="group-random-members"></p>
-                        </div>
-                        <div class="rcp-btn-container" id="rcp=cgp-btn-container">
-                            <button id="group-again-btn" class="rcp-btn" type="button">Call again</button>
-                            <button id="group-done-btn" class="rcp-btn" type="submit">Done</button>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>

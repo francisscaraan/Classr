@@ -12,6 +12,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=build" />
     <script type="module" src="../src/all/allPre.js"></script>
     <script type="module" src="../src/home/homePre.js"></script>
     <title>Classr. - Home</title>
@@ -76,7 +77,7 @@
         <div class="main-content">
             <div class="join-create">
                 <div class="join-create-cont">
-                    <h1 class="join-create-title">Join Session</h1><br>
+                    <div class="join-create-title">Join Session</div>
                     <div class="input-container">
                         <button id="open-join-session">
                             <i class='bx bx-plus' ></i>
@@ -85,7 +86,7 @@
                 </div>
                 <div class="line"></div>
                 <div class="join-create-cont">
-                    <h1 class="join-create-title">Create Session</h1><br>
+                    <div class="join-create-title">Create Session</div>
                     <div class="input-container">
                         <button id="open-create-session">
                             <i class='bx bx-plus' ></i>
@@ -121,9 +122,50 @@
                     </form>
                 </div>
             </div>
-            <div class="quick-js-container">
-                <div class="recent-sessions"><i class='bx bx-time'></i> Recent Sessions</div>
+            <div class="featured-container">
+                <div class="featured-title">Welcome to Classr.</div>
+                <div class="f-card-container">
+                    <div class="featured-card" id="fcard-1">
+                        <div class="header-color" style="background-color: rgb(158, 165, 144);"></div>
+                        <div class="card-title">
+                            <div>Joined Sessions</div>
+                            <i class='bx bx-book-open' ></i>
+                        </div>
+                        <p class="card-info">Go to your joined sessions</p>
+                    </div>
+                    <div class="featured-card" id="fcard-2">
+                        <div class="header-color" style="background-color: rgb(150, 153, 177);"></div>
+                        <div class="card-title">
+                            <div>Created Sessions</div>
+                            <i class='bx bx-line-chart' ></i>
+                        </div>
+                        <p class="card-info">Go to your created sessions</p>
+                    </div>
+                    <div class="featured-card" id="fcard-3">
+                        <div class="header-color" style="background-color: rgb(187, 164, 197);"></div>
+                        <div class="card-title">
+                            <div>Feature Updates</div>
+                            <i class='bx bx-cog'></i>
+                        </div>
+                        <p class="card-info">View latest features, updates, and fixes</p>
+                    </div>
+                    <div class="featured-card" id="fcard-4">
+                        <div class="header-color" style="background-color: rgb(151, 177, 177);"></div>
+                        <div class="card-title">
+                            <div>About Classr.</div>
+                            <i class='bx bx-info-circle' ></i>
+                        </div>
+                        <p class="card-info">Know more about Classr.</p>
+                    </div>
+                </div>
+                
             </div>
+            <!-- <div class="quick-js-container">
+                <div class="recent-sessions"><i class='bx bx-time'></i> Recently Created Sessions</div>
+            </div>
+            <div class="quick-js-container">
+                <div class="recent-sessions"><i class='bx bx-time'></i> Recently Joined Sessions</div>
+            </div> -->
         </div>
     </div>
 </body>

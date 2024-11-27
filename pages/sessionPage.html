@@ -43,7 +43,7 @@
                             <p class="user-email"><span id="userEmail"></span></p>
                         </div>
                     </div>
-                    <hr>
+                    <hr class="s-line">
                     <a href="#" class="sub-menu-link" id="logout">
                         <i class='bx bx-log-out'></i>
                         <p>Log out</p>
@@ -107,9 +107,7 @@
                                 <div id="s-userName"></div>
                             </div>
                         </div>
-                        <hr>
-                        
-                            
+                        <hr>  
                         <div class="myRecord-userInfo-container">
                             <div class="rankContainer">
                                 <div>Rank:</div>
@@ -119,14 +117,303 @@
                                 <div>Total points:</div>
                                 <div id="s-userPoint"></div>
                             </div>
+                        </div>  
+                    </div>
+                </div>
+                <div id="mode1" class="modeList showContent">
+                    <div class="mode-btn-container">
+                        <div class="recitation-mode-buttons">
+                            <button id="iMB1" class="iMode-btn1">Individual</button>
+                            <button id="gMB1" class="gMode-btn1">Group</button>
                         </div>
-                        
-                        
+                    </div>
+                    <div class="rh-title"><i class='bx bx-time-five' ></i> Individual Recitation History</div>
+                    <div id="irh-container" class="irhContainer">
+                        <div class="irh-board-header" id="irh-header">
+                            <div class="h-header-name-title">Name</div>
+                            <div class="h-header-date-title">Date</div>
+                            <div class="h-header-ap-title">Added<br>Points</div>
+                        </div>
+                        <!-- <div class="no-irh">
+                            There are no records yet :(
+                        </div> -->
+                    </div>
+                    <div class="rb-title">All Points</div>
+                    <div id="s-mode-recitation-container1" class="modeContent">
+                        <div class="recitation-board-header" id="b-header">
+                            <div class="header-name-title">Name</div>
+                            <div class="header-points-title">Points</div>
+                        </div>
+                        <!-- <div class="member-card">
+                            <div class="name-container">Francis Gerard A. Caraan</div>
+                            <div class="point-container">100</div>
+                        </div> -->
+                        <!-- <div class="no-members">
+                            <div class="mssg">There are no members yet :(</div>
+                            <button id="copyInv">Copy code <i class='bx bx-copy'></i></button>
+                        </div> -->
+                    </div>
+                </div>
+                <div id="mode2" class="modeList">
+                    <div class="mode-btn-container">
+                        <div class="recitation-mode-buttons">
+                            <button id="iMB2" class="iMode-btn2">Individual</button>
+                            <button id="gMB2" class="gMode-btn2">Group</button>
+                        </div>
+                    </div>
+                    <div class="rh-title"><i class='bx bx-time-five' ></i> Group Recitation History</div>
+                    <div id="grh-container" class="grhContainer">
+                        <div class="grh-board-header" id="grh-header">
+                            <div class="h-header-name-title">Group</div>
+                            <div class="h-header-date-title">Date</div>
+                            <div class="h-header-ap-title">Added<br>Points</div>
+                        </div>
+                        <!-- <div class="grh-card">
+                            <div class="grh-name-container">
+                                <div class="grh-name">E-Tech Solutions</div>
+                            </div>
+                            <div class="grh-date-container">
+                                <div class="grh-date">2024-11-23 21:23</div>
+                            </div>
+                            <div class="grh-ap-container">
+                                <div class="grh-ap">+5</div>
+                            </div>
+                        </div> -->
+                        <!-- <div class="no-grh">
+                            <div class="mssg">No records yet</div>
+                        </div> -->
+                    </div>
+                    <div class="rb-title">All Points</div>
+                    <div id="s-mode-recitation-container2" class="modeContent">
+                        <div class="recitation-board-header" id="recitation-board-header">
+                            <div class="header-name-title">Group</div>
+                            <div class="header-points-title">Points</div>
+                        </div>
+                        <!-- <div class="group-card">
+                             <div class="name-container">
+                                <div class="gname-gmembers-container">
+                                    <div class="gname">E-Tech Solutions</div>
+                                    <div class="gmembers">Balona, Caraan, Valenzuela</div>
+                                </div>
+                            </div>
+                            <div class="point-container">100</div>
+                        </div> -->
+                        <!-- <div class="no-groups">
+                            No groups yet :(
+                        </div> -->
                     </div>
                 </div>
             </div>
-            
-            
+        </div>
+        <!-- Members Tab -->
+        <div class="screen" id="screen2">
+            <div class="sub-nav" id="sub-m">
+                <div class="back-container">
+                    <button class="back-btn" onclick="exitSession()">
+                        <i class='bx bx-chevron-left'></i>
+                    </button>
+                </div>
+                <div class="sub-nav-btn">
+                    <button id="recitationM">Recitation</button>
+                </div>
+                <div class="sub-nav-btn">
+                    <button id="membersM">Members</button>
+                </div>
+                <div class="sub-nav-btn">
+                    <button id="groupsM">Groups</button>
+                </div>
+                <div class="sub-nav-btn">
+                    <button id="leaderboardM">Leaderboard</button>
+                </div>
+            </div>
+            <div id="s-members-content">
+                <div class="host-container">
+                    <div class="tab-title-container">
+                        <p class="tab-title">Host</p>
+                    </div>
+                    <hr class="divider">
+                    <div class="host-name">
+                        <div id="mtHostName" class="mt-name-text"></div>
+                        <div id="mtHostEmail" class="mt-email-text"></div>
+                    </div>
+                </div>
+                <div id="membersContainer" class="members-container">
+                    <div class="tab-title-container">
+                        <p class="tab-title">Members</p>
+                    </div>
+                    <hr class="divider">
+                    <!-- <div class="mt-member-card">
+                        <div class="name-email-container">
+                            <div class="mt-name-text">Francis Gerard A. Caraan</div>
+                            <div class="mt-email-text">ciss@gmail.com</div>
+                        </div>
+                    </div>
+                    <hr class="divider"> -->
+                    
+                    <!-- <div class="mt-no-members">
+                        <div class="mssg">There are no members yet :(</div>
+                        <button id="mtCopyInv">Copy code <i class='bx bx-copy'></i></button>
+                    </div> -->
+                </div>
+                <!-- <div class="delete-mem-popup">
+                    <div class="dmp-modal">
+                        <div class="dmp-info">
+                            <p class="dmp-title">Delete Member</p>
+                        </div>
+                        <p class="deleteQ">Delete Francis Gerard A. Caraan?</p>
+                        <form action="" method="post" id="delete-mem-form" class="deleteMemForm">
+
+                            <div class="dmp-btn-container">
+                                <button id="cancel-deleteMem" class="egp-btn" type="button">Cancel</button>
+                                <button id="save-deleteMem" class="dgp-btn" type="submit">Delete</button>
+                            </div>
+                            <div class="waitCreate" id="waitDelete">Deleting group...</div>
+                        </form>
+                    </div>
+                </div> -->
+            </div>
+
+        </div>
+
+        <!-- Groups Tab -->
+        <div class="screen" id="screen3">
+            <div class="sub-nav" id="sub-g">
+                <div class="back-container">
+                    <button class="back-btn" onclick="exitSession()">
+                        <i class='bx bx-chevron-left'></i>
+                    </button>
+                </div>
+                <div class="sub-nav-btn">
+                    <button id="recitationG">Recitation</button>
+                </div>
+                <div class="sub-nav-btn">
+                    <button id="membersG">Members</button>
+                </div>
+                <div class="sub-nav-btn">
+                    <button id="groupsG">Groups</button>
+                </div>
+                <div class="sub-nav-btn">
+                    <button id="leaderboardG">Leaderboard</button>
+                </div>
+            </div>
+            <div id="groups-content">
+                <div class="group-container" id="group-container">
+                    <div class="group-title-container">
+                        <p class="group-title">Groups</p>
+                    </div>
+                    <hr class="divider">
+                    <!-- <div class="gt-group-card">
+                        <div class="groupName-members-container">
+                            <div class="gt-groupName-text">Group 1</div>
+                            <div class="gt-members-text">Balona, Caraan, Valenzuela</div>
+                        </div>
+                    </div>
+                    <hr class="divider"> -->
+                    <!-- <div class="gt-no-groups">
+                        There are no groups yet :(
+                    </div> -->
+                </div>
+            </div>
+        </div>
+        <!-- Leaderboard Tab -->
+        <div class="screen" id="screen4">
+            <div class="sub-nav" id="sub-l">
+                <div class="back-container">
+                    <button class="back-btn" onclick="exitSession()">
+                        <i class='bx bx-chevron-left'></i>
+                    </button>
+                </div>
+                <div class="sub-nav-btn">
+                    <button id="recitationL">Recitation</button>
+                </div>
+                <div class="sub-nav-btn">
+                    <button id="membersL">Members</button>
+                </div>
+                <div class="sub-nav-btn">
+                    <button id="groupsL">Groups</button>
+                </div>
+                <div class="sub-nav-btn">
+                    <button id="leaderboardL">Leaderboard</button>
+                </div>
+            </div>
+            <div id="leaderboard-content">
+                <div id="lmode1" class="lmodeList showContent">
+                    <div class="lmode-btn-container">
+                        <div class="lmode-buttons">
+                            <button id="iLMB1" class="iLMode-btn1">Individual</button>
+                            <button id="gLMB1" class="gLMode-btn1">Group</button>
+                        </div>
+                    </div>
+                    <div id="lboard-container1" class="lmodeContent">
+                        <div class="lboard-header" id="l-header">
+                            <div class="lh-rank-title">Rank</div>
+                            <div class="lh-name-title">Name</div>
+                            <div class="lh-points-title">Points</div>
+                        </div>
+                        <!-- <div class="lboard-card">
+                            <div class="lboard-rank">1</div>
+                            <div class="lboard-name">Francis Gerard A. Caraan</div>
+                            <div class="lboard-points">100</div>
+                        </div> -->
+                    </div>
+                </div>
+                <div id="lmode2" class="lmodeList">
+                    <div class="lmode-btn-container">
+                        <div class="lmode-buttons">
+                            <button id="iLMB2" class="iLMode-btn2">Individual</button>
+                            <button id="gLMB2" class="gLMode-btn2">Group</button>
+                        </div>
+                    </div>
+                    <div id="lboard-container2" class="lmodeContent">
+                        <div class="lboard-header" id="l-header">
+                            <div class="lh-rank-title">Rank</div>
+                            <div class="lh-name-title">Group</div>
+                            <div class="lh-points-title">Points</div>
+                        </div>
+                        <!-- <div class="group-card">
+                            <div class="name-container">
+                                <div class="gname-gmembers-container">
+                                    <div class="gname">E-Tech Solutions</div>
+                                    <div class="gmembers">Balona, Caraan, Valenzuela</div>
+                                </div>
+                            </div>
+                            <div class="point-container">100</div>
+                            <button id="group-edit-btn" class="group-edit-btn"><i class='bx bx-edit' ></i></button>
+                        </div> -->
+                        <!-- <div class="no-members">
+                            <div class="mssg">There are no members yet :(</div>
+                            <button id="copyInv">Copy code <i class='bx bx-copy'></i></button>
+                        </div> -->
+                    </div>
+                </div>
+                
+                <!-- <div class="edit-points-popup" id="epp-container">
+                    <div class="epp-modal">
+                        <div class="epp-info">
+                            <p class="epp-title">Edit Points</p>
+                            <div class="epp-name">Francis Gerard A. Caraan</div>
+                        </div>
+                        <hr>
+                        
+                        <form action="" method="post" class="edit-point-form">
+                            <div class="current-point-container">
+                                <div class="current-point">Current points:</div>
+                                <div class="current-point">0</div>
+                            </div>
+                            <div class="new-point-container">
+                                <div class="new-point">Update points:</div>
+                                <div class="input-epp-container">
+                                    <input type="number" name="newPoints" class="input-epp" placeholder="Edit points" required>
+                                </div>
+                            </div>
+                            <div class="epp-btn-container">
+                                <button id="cancel-edit" class="epp-btn" type="button">Cancel</button>
+                                <button id="save-edit" class="epp-btn" type="submit">Save</button>
+                            </div>
+                        </form>
+                    </div>
+                </div> -->
+            </div>
         </div>
     </div>
 </body>

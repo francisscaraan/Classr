@@ -27,7 +27,6 @@ const sessionsRef = collection(db, 'sessions');
 //Create Session
 //Create Session - Get email
 const user = localStorage.getItem('loggedInUserId');
-console.log(user);
 let hostEmail, hostName, userName, userEmail;
 if(user){
     const emailRef = doc(db, "users", user);
@@ -54,13 +53,10 @@ else{
 
 //Create Session - Get Form
 function getRandomPastelColor() {
-    const randomColorValue = () => Math.floor(Math.random() * 256); // Random number between 0 and 255
-    const r = (randomColorValue() + 150)/2; // Blend with white
+    const randomColorValue = () => Math.floor(Math.random() * 256);
+    const r = (randomColorValue() + 150)/2;
     const g = (randomColorValue() + 150)/2;
     const b = (randomColorValue() + 150)/2;
-    // const r = (randomColorValue()); // Blend with white
-    // const g = (randomColorValue());
-    // const b = (randomColorValue());
     return `rgb(${Math.floor(r)}, ${Math.floor(g)}, ${Math.floor(b)})`;
 }
 

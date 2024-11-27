@@ -26,10 +26,10 @@
         <div class="messageDiv" id="signUpMessage" style="display: none;"></div>
         <!-- <p class="upl"><i>Upload profile picture</i></p>
         <div class="uploadContainer"><input type="file" id="profilePic" accept="image/*" required></div> -->
-        <input type="text" name="fullName" id="fullName" placeholder="Full Name" required class="def-input" maxlength="25">
-        <input type="email" name="email" id="addEmail" placeholder="Email" required class="def-input">
+        <input type="text" name="fullName" id="fullName" placeholder="Full Name" class="def-input" maxlength="25" required>
+        <input type="email" name="addEmail" id="addEmail" placeholder="Email" class="def-input" required>
         <div class="create-password-container">
-          <div><input type="password" name="password" id="addPassword" placeholder="Password" required class="create-password"></div>
+          <div><input type="password" name="addPassword" id="addPassword" placeholder="Password" class="create-password" required></div>
           <div><img src="static/icons/hideIcon.svg" id="eyeIcon"></div>
         </div>
         <p>Already have an Account? <button class="switchPageButton" id="signInButton">Sign In</button> </p>
@@ -37,6 +37,7 @@
           <button class="submit-btn" id="submitSignUp">Sign Up</button>
         </div>
       </form>
+      <p class="index-load" id="load-signup">Creating account...</p>
     </div>
 
     <div class="container" id="signIn">
@@ -49,7 +50,7 @@
           <div class="submit-container">  
             <button class="submit-btn" id="submitSignIn">Login</button>
           </div>
-          <!-- <p class="logging-in">Logging in...</p> -->
+          <p class="index-load" id="load-login">Logging in...</p>
         </form>
       </div>
       <p class="bottom">E-Tech Solutions, All Rights Reserved 2024</p>

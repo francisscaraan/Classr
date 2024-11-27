@@ -72,6 +72,7 @@ async function displaySessions() {
                     // console.log(doc.data());
                     const card = document.createElement('div');
                     card.id = 'session-card';
+                    card.classList.add('session-card');
                     card.onclick = () => {
                         window.location.href = "sessionPage.html?docId=" + encodeURIComponent(doc.id);
                     }
@@ -104,6 +105,32 @@ async function displaySessions() {
                     cardDate.classList.add('card-info');
                     cardDate.textContent = `${doc.data().dateCreated.toDate().getMonth() + 1} / ${doc.data().dateCreated.toDate().getDate()} / ${doc.data().dateCreated.toDate().getFullYear()}`;
                     card.appendChild(cardDate);
+
+                    // Card button container
+                    const cardBtnContainer = document.createElement('div');
+                    cardBtnContainer.classList.add('s-card-btn-container');
+                    card.appendChild(cardBtnContainer);
+
+                    // // Card Delete button
+                    // const deleteSessionBtn = document.createElement('button');
+                    // deleteSessionBtn.classList.add('s-delete-btn');
+                    // deleteSessionBtn.addEventListener('click', function(event){
+                    //     event.stopPropagation();
+                    //     alert('Sorry Di pa tapos :(((');
+                    //     // .then(() => {
+                    //     //     alert('Session Code Copied!');
+                    //     // })
+                    //     // .catch(err => {
+                    //     //     console.error(err);
+                    //     // });
+                    // })
+
+                    // cardBtnContainer.appendChild(deleteSessionBtn);
+
+                    // // Delete button icon
+                    // const deleteSessionBtnIcon = document.createElement('i');
+                    // deleteSessionBtnIcon.classList.add('bx', 'bx-trash');
+                    // deleteSessionBtn.appendChild(deleteSessionBtnIcon);
 
                     sessionCard.appendChild(card);
                 });

@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js"; 
 import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-auth.js";
-import { getFirestore, collection, query, orderBy, limit, getDoc, updateDoc, arrayUnion, arrayRemove, getDocs, addDoc, doc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore.js";
+import { getFirestore, collection, query, orderBy, limit, getDoc, updateDoc, arrayUnion, arrayRemove, getDocs, addDoc, doc, serverTimestamp, deleteDoc } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -1563,6 +1563,51 @@ try {
     console.error("Error retrieving data:", error);
 }
 };
-
-// Call the function
 displaySortedGroupsAndPoints();
+
+const deleteSession = document.getElementById('delete-session-btn');
+const cancelDelete = document.getElementById('cancel-delete');
+const saveDelete = document.getElementById('save-delete');
+const waitDelete = document.getElementById('waitDelete');
+const dsPopup = document.getElementById('dsp');
+deleteSession.addEventListener('click', () => {
+    dsPopup.classList.add('showDsp');
+})
+
+cancelDelete.addEventListener('click', () => {
+    dsPopup.classList.remove('showDsp');
+})
+
+function showDLoading () {
+    waitDelete.style.display = "block";
+}
+
+saveDelete.addEventListener('click', async() => {
+    showDLoading();
+    try {
+        const docSnap = await getDoc(docRef);
+        if(docSnap.exists()){
+            const data = docSnap.data();
+            const idList = data.membersId;
+
+            for(let i = 0; i < idList.length; i++){
+                const memRef = doc(db, "users", idList[i]);
+                
+                updateDoc(memRef, {
+                    joinedSessions: arrayRemove(sId),
+                })
+            }
+        }
+        deleteDoc(docRef)
+        .then(() => {
+            console.log("Document successfully deleted!");
+            window.location.href = "mysessions.html";
+          })
+          .catch((error) => {
+            console.error("Error deleting document: ", error);
+          });
+        
+    } catch(error) {
+        console.log(error);
+    }
+})

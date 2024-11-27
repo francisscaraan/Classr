@@ -167,3 +167,15 @@ p {
   font-size: 12px;
   font-style: italic;
 }
+
+.index-load {
+  display: none;
+  color: #1A98A6;
+  text-align: center;
+  font-style: italic;
+  margin-top: 30px;
+}
+
+.index-load.showILoad {
+  display: block;
+}

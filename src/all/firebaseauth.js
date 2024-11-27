@@ -28,7 +28,22 @@ function showMessage(message, divId){
   }, 5000);
 }
 
+const loadLogin = document.getElementById('load-login');
+const loadSignUp = document.getElementById('load-signup');
+function showLoadLog (){
+  loadLogin.classList.add('showILoad');
+}
+function showLoadSign (){
+  loadSignUp.classList.add('showILoad');
+}
+function hideLoadLog (){
+  loadLogin.classList.remove('showILoad');
+}
+function hideLoadSign (){
+  loadSignUp.classList.remove('showILoad');
+}
 // Create Account
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const signUp = document.getElementById('submitSignUp');
 signUp.addEventListener('click', (event) => {
   event.preventDefault();
@@ -36,34 +51,46 @@ signUp.addEventListener('click', (event) => {
   const fullName = document.getElementById('fullName').value;
   const email = document.getElementById('addEmail').value;
   const password = document.getElementById('addPassword').value;
-
+  if (fullName === "" || email === "" || password === ""){
+    alert('Please fill out all fields');
+    return;
+  } else if (!emailRegex.test(email)){
+    alert('Invalid email address');
+    return;
+  }
+  showLoadSign();
   const auth = getAuth();
   const db = getFirestore();
-
-  createUserWithEmailAndPassword(auth, email, password)
-  .then((userCredential) => {
-    const user = userCredential.user;
-    const userData = {
-      email: email,
-      fullName: fullName,
-    };
-    showMessage('Account Created Successfully', 'signUpMessage');
-    const docRef = doc(db, "users", user.uid);
-    setDoc(docRef, userData)
-    .then(() => {
-      window.location.href='index.html';
+  try {
+    createUserWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      const user = userCredential.user;
+      const userData = {
+        email: email,
+        fullName: fullName,
+      };
+      showMessage('Account Created Successfully', 'signUpMessage');
+      const docRef = doc(db, "users", user.uid);
+      setDoc(docRef, userData)
+      .then(() => {
+        window.location.href='index.html';
+      })
+      .catch((error) => {
+        console.error("error writing document", error);
+        hideLoadSign();
+      });
     })
     .catch((error) => {
-      console.error("error writing document", error);
-
-    });
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    if (errorCode == 'auth/email-already-in-use'){
-      showMessage('Oops! Email address already exists', 'signUpMessage');
-    }
-  })
+      const errorCode = error.code;
+      if (errorCode == 'auth/email-already-in-use'){
+        showMessage('Oops! Email address already exists', 'signUpMessage');
+        hideLoadSign();
+      }
+    })
+  } catch {
+    hideLoadSign();
+    alert('Invalid input');
+  }
 });
 
 //Login Account
@@ -73,7 +100,11 @@ signIn.addEventListener('click', (event) => {
   const email = document.getElementById('email').value;
   const password = document.getElementById('password').value;
   const auth = getAuth();
-
+  if (email === "" || password === ""){
+    alert('Please fill out all fiels');
+    return;
+  }
+  showLoadLog();
   signInWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
     showMessage('Hello! Welcome to Classr.', 'signInMessage');
@@ -87,8 +118,10 @@ signIn.addEventListener('click', (event) => {
     const errorCode = error.code;
     if (errorCode == 'auth/invalid-credential'){
       showMessage('Incorrect Email or Password', 'signInMessage');
+      hideLoadLog();
     }
     else {
+      hideLoadLog();
       showMessage('Error Logging in', 'signInMessage');
     }
   })
