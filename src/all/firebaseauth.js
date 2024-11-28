@@ -45,8 +45,8 @@ function hideLoadSign (){
 
 // Create Account
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const signUp = document.getElementById('submitSignUp');
-signUp.addEventListener('click', (event) => {
+const signUp = document.getElementById('createAccount');
+signUp.addEventListener('submit', (event) => {
   event.preventDefault();
   // const pfp = document.getElementById('profilePic').files[0];
   const fullName = document.getElementById('fullName').value;
@@ -86,6 +86,7 @@ signUp.addEventListener('click', (event) => {
       if (errorCode == 'auth/email-already-in-use'){
         showMessage('Oops! Email address already exists', 'signUpMessage');
         hideLoadSign();
+        signUp.reset();
         return;
       }
     })
@@ -97,8 +98,8 @@ signUp.addEventListener('click', (event) => {
 });
 
 //Login Account
-const signIn = document.getElementById('submitSignIn');
-signIn.addEventListener('click', (event) => {
+const signIn = document.getElementById('loginAccount');
+signIn.addEventListener('submit', (event) => {
   event.preventDefault();
   const email = document.getElementById('email').value;
   const password = document.getElementById('password').value;

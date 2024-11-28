@@ -22,7 +22,7 @@
     </header>
     <div class="container" id="signup" style="display:none;">
       <h1 class="form-title">User Sign Up</h1>
-      <form method="post" action="">
+      <form method="post" action="" id="createAccount">
         <div class="messageDiv" id="signUpMessage" style="display: none;"></div>
         <!-- <p class="upl"><i>Upload profile picture</i></p>
         <div class="uploadContainer"><input type="file" id="profilePic" accept="image/*" required></div> -->
@@ -34,7 +34,7 @@
         </div>
         <p>Already have an Account? <button class="switchPageButton" id="signInButton">Sign In</button> </p>
         <div class="submit-container">
-          <button class="submit-btn" id="submitSignUp">Sign Up</button>
+          <button class="submit-btn" id="submitSignUp" type="submit">Sign Up</button>
         </div>
       </form>
       <p class="index-load" id="load-signup">Creating account...</p>
@@ -42,7 +42,7 @@
 
     <div class="container" id="signIn">
         <h1 class="form-title">User Login</h1>
-        <form method="post" action="">
+        <form method="post" action="" id="loginAccount">
           <div class="messageDiv" id="signInMessage" style="display: none;"></div>
           <input type="email" name="email" id="email" placeholder="Email" required class="def-input">
           <input type="password" name="password" id="password" placeholder="Password" required class="def-input">

@@ -10,7 +10,7 @@ signUpButton.addEventListener('click',function(){
 signInButton.addEventListener('click', function(){
     signInForm.style.display="block";
     signUpForm.style.display="none";
-    location.reload();
+    window.location.href = "index.html";
 })
 
 let eyeIcon = document.getElementById("eyeIcon");
