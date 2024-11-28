@@ -42,6 +42,7 @@ function hideLoadLog (){
 function hideLoadSign (){
   loadSignUp.classList.remove('showILoad');
 }
+
 // Create Account
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const signUp = document.getElementById('submitSignUp');
@@ -85,11 +86,13 @@ signUp.addEventListener('click', (event) => {
       if (errorCode == 'auth/email-already-in-use'){
         showMessage('Oops! Email address already exists', 'signUpMessage');
         hideLoadSign();
+        return;
       }
     })
   } catch {
     hideLoadSign();
     alert('Invalid input');
+    return;
   }
 });
 
