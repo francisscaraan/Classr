@@ -133,7 +133,8 @@
 .join-popup-btn {
     margin-top: 20px;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
+    gap: 20px;
 }
 
 .join-btn {
@@ -244,7 +245,8 @@
 .create-popup-btn {
     margin-top: 20px;
     display: flex;
-    justify-content: flex-end;  
+    justify-content: center;
+    gap: 20px;  
 }
 
 .create-btn {
@@ -398,4 +400,12 @@
 .main-content a:hover {
     color: #1D757F;
     font-size: 19.7px;
+}
+
+.home-load {
+    text-align: center;
+    margin-top: 30px;
+    font-style: italic;
+    color: #14a6b7;
+    display: none;
 }

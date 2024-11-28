@@ -59,11 +59,22 @@ function getRandomPastelColor() {
     const b = (randomColorValue() + 150)/2;
     return `rgb(${Math.floor(r)}, ${Math.floor(g)}, ${Math.floor(b)})`;
 }
+const joinLoad = document.getElementById('joinLoad');
+const createLoad = document.getElementById('createLoad');
+
+function showJLoad(){
+    joinLoad.style.display = "block";
+}
+
+function showCLoad(){
+    createLoad.style.display = "block";
+}
 
 const createSession = document.querySelector('#create-session-form')
 
 createSession.addEventListener('submit', (event) => {
     event.preventDefault()
+    showCLoad();
     // console.log(createSession.sessionName.value);
     addDoc (sessionsRef, {
         // sessionCode: createSession.sessionCode.value,
@@ -100,6 +111,7 @@ const joinSession = document.querySelector('#join-session-form')
 
 joinSession.addEventListener('submit', (event) => {
     event.preventDefault()
+    showJLoad();
     // console.log(joinSession.inputCode.value);
     const joinRef = doc(db, 'users', user);
     const memberRef = doc(db, 'sessions', joinSession.inputCode.value)
