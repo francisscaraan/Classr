@@ -66,6 +66,10 @@ function showJLoad(){
     joinLoad.style.display = "block";
 }
 
+function hideJLoad(){
+    joinLoad.style.display = "none";
+}
+
 function showCLoad(){
     createLoad.style.display = "block";
 }
@@ -112,36 +116,45 @@ const joinSession = document.querySelector('#join-session-form')
 joinSession.addEventListener('submit', (event) => {
     event.preventDefault()
     showJLoad();
-    // console.log(joinSession.inputCode.value);
+
     const joinRef = doc(db, 'users', user);
     const memberRef = doc(db, 'sessions', joinSession.inputCode.value)
 
     //Check first if session exist
     async function check() {
         const docSnap = await getDoc(memberRef);
-        if(docSnap.exists()) {
-            const addName = docSnap.data().membersName || [];
-            const addPoint = docSnap.data().membersPoint || [];
-            const updateName = [...addName, userName];
-            const updatePoint = [...addPoint, 0];
-            
-            updateDoc (memberRef, {
-                // members: arrayUnion(userName),
-                membersName: updateName,
-                membersEmail: arrayUnion(userEmail),
-                membersPoint: updatePoint,
-                membersId: arrayUnion(user),
-            })
-            updateDoc (joinRef, {
-                // membersName: arrayUnion(userName),
-                joinedSessions: arrayUnion(joinSession.inputCode.value),
-            })
-            .then(() => {
-                joinSession.reset();
-                window.location.href='sessions.html';
-            })       
+        const joinSnap = await getDoc(joinRef);
+        const joinData = joinSnap.data().joinedSessions;
+
+        if(joinData.includes(joinSession.inputCode.value)){
+            alert('You already joined this session :)');
+            joinSession.reset();
+            hideJLoad();
         } else {
-            alert('Session does not exist :(');
+            if(docSnap.exists()) {
+                const addName = docSnap.data().membersName || [];
+                const addPoint = docSnap.data().membersPoint || [];
+                const updateName = [...addName, userName];
+                const updatePoint = [...addPoint, 0];
+                
+                updateDoc (memberRef, {
+                    // members: arrayUnion(userName),
+                    membersName: updateName,
+                    membersEmail: arrayUnion(userEmail),
+                    membersPoint: updatePoint,
+                    membersId: arrayUnion(user),
+                })
+                updateDoc (joinRef, {
+                    // membersName: arrayUnion(userName),
+                    joinedSessions: arrayUnion(joinSession.inputCode.value),
+                })
+                .then(() => {
+                    joinSession.reset();
+                    window.location.href='sessions.html';
+                })       
+            } else {
+                alert('Session does not exist :(');
+            }
         }
     }
     check();
