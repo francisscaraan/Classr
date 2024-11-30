@@ -69,6 +69,7 @@ signUp.addEventListener('submit', (event) => {
       const userData = {
         email: email,
         fullName: fullName,
+        joinedSessions: [],
       };
       showMessage('Account Created Successfully', 'signUpMessage');
       const docRef = doc(db, "users", user.uid);

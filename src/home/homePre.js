@@ -116,17 +116,17 @@ const joinSession = document.querySelector('#join-session-form')
 joinSession.addEventListener('submit', (event) => {
     event.preventDefault()
     showJLoad();
-
+    const codeEntry = joinSession.inputCode.value;
     const joinRef = doc(db, 'users', user);
-    const memberRef = doc(db, 'sessions', joinSession.inputCode.value)
+    const memberRef = doc(db, 'sessions', codeEntry);
 
-    //Check first if session exist
+    // Check first if session exist
     async function check() {
         const docSnap = await getDoc(memberRef);
         const joinSnap = await getDoc(joinRef);
         const joinData = joinSnap.data().joinedSessions;
-
-        if(joinData.includes(joinSession.inputCode.value)){
+        
+        if(joinData.includes(codeEntry)){
             alert('You already joined this session :)');
             joinSession.reset();
             hideJLoad();
