@@ -368,6 +368,12 @@
     padding: 20px 40px;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+}
+
+.etech {
+    display: flex;
+    align-self: center;
 }
 
 #feature-content {

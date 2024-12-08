@@ -350,10 +350,15 @@ async function displayGroupMode(){
                                     const updateGDateHistory = [...gDateHistory, `${year}-${month}-${day} ${hours}:${minutes}`];
                                     
                                     const gPointHistory = grpInfo.data().gHistoryPoint || [];
-                                    const updateGPointHistory = [...gPointHistory, `+${updatedPoint}`];
+                                    // const updateGPointHistory = [...gPointHistory, `${updatedPoint}`];
                                     
-                                    console.log(gNameHistory.length);
-                                    
+                                    let updateGPointHistory;
+                                    if (updatedPoint >= 0){
+                                        updateGPointHistory = [...gPointHistory, `+${updatedPoint}`];
+                                    } else if (updatedPoint <= 0){
+                                        updateGPointHistory = [...gPointHistory, `${updatedPoint}`];
+                                    }
+                                    // console.log(gNameHistory.length);
                                     
                                     
                                     
@@ -593,6 +598,7 @@ async function displayIndividualMode(){
                             }
                             editForm.addEventListener('submit', (event) => {
                                 event.preventDefault()
+
                                 const updatedPoint = parseInt(document.getElementById('input-epp-' + i).value);
                                 async function epp() {
                                     showMssg();
@@ -600,6 +606,7 @@ async function displayIndividualMode(){
                                     try {
                                         if(memInfo.exists()) {
                                             let pointsArray = memInfo.data().membersPoint || [];
+
                                             pointsArray[i] = pointsArray[i] + updatedPoint;
                                             
                                             const iNameHistory = memInfo.data().iHistoryName || [];
@@ -609,7 +616,14 @@ async function displayIndividualMode(){
                                             const updateIDateHistory = [...iDateHistory, `${year}-${month}-${day} ${hours}:${minutes}`];
                                             
                                             const iPointHistory = memInfo.data().iHistoryPoint || [];
-                                            const updateIPointHistory = [...iPointHistory, `+${updatedPoint}`];
+                                            
+
+                                            let updateIPointHistory;
+                                            if (updatedPoint >= 0){
+                                                updateIPointHistory = [...iPointHistory, `+${updatedPoint}`];
+                                            } else if (updatedPoint <= 0){
+                                                updateIPointHistory = [...iPointHistory, `${updatedPoint}`];
+                                            }
                                     
                                             console.log(iNameHistory.length);
 
@@ -753,6 +767,11 @@ async function displayIRH(){
 
                         const irhAp = document.createElement('div');
                         irhAp.classList.add('irh-ap');
+                        if (irhPointList[i] > 0){
+                            irhAp.classList.add('plusGreen');
+                        } else {
+                            irhAp.classList.add('minusRed');
+                        }
                         irhAp.textContent = `${irhPointList[i]}`;
                         irhApContainer.appendChild(irhAp);
 
@@ -822,6 +841,11 @@ async function displayGRH(){
 
                         const grhAp = document.createElement('div');
                         grhAp.classList.add('grh-ap');
+                        if (grhPointList[i] > 0){
+                            grhAp.classList.add('plusGreen');
+                        } else {
+                            grhAp.classList.add('minusRed');
+                        }
                         grhAp.textContent = `${grhPointList[i]}`;
                         grhApContainer.appendChild(grhAp);
 

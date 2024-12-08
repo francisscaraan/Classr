@@ -53,10 +53,10 @@ else{
 
 //Create Session - Get Form
 function getRandomPastelColor() {
-    const randomColorValue = () => Math.floor(Math.random() * 256);
-    const r = (randomColorValue() + 150)/2;
-    const g = (randomColorValue() + 150)/2;
-    const b = (randomColorValue() + 150)/2;
+    const randomColorValue = () => Math.floor(Math.random() * 180);
+    const r = ((randomColorValue() - 10) + 180)/2;
+    const g = ((randomColorValue() - 20) + 180)/2;
+    const b = ((randomColorValue() - 5) + 180)/2;
     return `rgb(${Math.floor(r)}, ${Math.floor(g)}, ${Math.floor(b)})`;
 }
 const joinLoad = document.getElementById('joinLoad');

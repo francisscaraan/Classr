@@ -410,7 +410,14 @@ border: 0.1px solid #d4cfca;
 
 .irh-ap, .grh-ap {
   margin: 0 auto;
+}
+
+.plusGreen {
   color: #1A98A6;
+}
+
+.minusRed {
+  color: #d2908d;
 }
 
 .no-groups {

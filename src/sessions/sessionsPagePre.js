@@ -223,6 +223,11 @@ async function displayIRH(){
 
                       const irhAp = document.createElement('div');
                       irhAp.classList.add('irh-ap');
+                      if (irhPointList[i] > 0){
+                        irhAp.classList.add('plusGreen');
+                      } else {
+                          irhAp.classList.add('minusRed');
+                      }
                       irhAp.textContent = `${irhPointList[i]}`;
                       irhApContainer.appendChild(irhAp);
                   }
@@ -347,6 +352,11 @@ async function displayGRH(){
 
                       const grhAp = document.createElement('div');
                       grhAp.classList.add('grh-ap');
+                      if (grhPointList[i] > 0){
+                        grhAp.classList.add('plusGreen');
+                    } else {
+                        grhAp.classList.add('minusRed');
+                    }
                       grhAp.textContent = `${grhPointList[i]}`;
                       grhApContainer.appendChild(grhAp);
 
